@@ -13,8 +13,8 @@ Namespace Wrappers
         public $response;
 
         private $ses,
-            $verb,
-            $parameters         = [];
+                $verb,
+                $parameters         = [];
 
         public static $curlOptions  = [];
 
