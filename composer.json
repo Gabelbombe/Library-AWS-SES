@@ -1,0 +1,17 @@
+{
+  "name": "ehime/SES-Wrapper",
+  "homepage": "http://github.com/Library-AWS-SES/wiki",
+  "description": "PHP Wrapper for SES",
+  "keywords": ["aws","amazon","ses","php"],
+  "type": "library",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Jd Daniel :: Ehime-ken",
+      "homepage": "http://linkedin.com/in/ehimeprefecture"
+    }
+  ],
+  "require": {
+    "aws/aws-sdk-php": "2.*"
+  }
+}
