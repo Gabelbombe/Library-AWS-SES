@@ -1,5 +1,5 @@
 {
-  "name": "ehime/SES-Wrapper",
+  "name": "ehime/Library-AWS-SES",
   "homepage": "http://github.com/Library-AWS-SES/wiki",
   "description": "PHP Wrapper for SES",
   "keywords": ["aws","amazon","ses","php"],
