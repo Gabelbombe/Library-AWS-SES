@@ -1,5 +1,5 @@
 <?php
-Namespace Wrappers\Aws
+Namespace Wrappers\SimpleEmailService
 {
     /**
      * SimpleEmailService is based on Donovan Schonknecht's Amazon S3 PHP class, found here:
@@ -92,7 +92,7 @@ Namespace Wrappers\Aws
          * @param string $host Amazon Host through which to send the emails
          * @return void
          */
-        public function construct($accessKey = null, $secretKey = null, $host = 'email.us-east-1.amazonaws.com')
+        public function __construct($accessKey = null, $secretKey = null, $host = 'email.us-east-1.amazonaws.com')
         {
             if (null !== ($accessKey || $secretKey))
             {
