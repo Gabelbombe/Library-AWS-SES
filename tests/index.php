@@ -8,7 +8,7 @@ define  ('APP_HOME', getenv('APP_HOME'));
 $auto = require APP_HOME . '/vendor/autoload.php';
 
 $ses = New Wrappers\SimpleEmailService\SES(
-    getenv('KEY'), getenv('SECRET'), 'email-smtp.us-east-1.amazonaws.com'
+    getenv('KEY'), getenv('SECRET'), 'email.us-east-1.amazonaws.com'
 );
 
 print_r($ses->verifyEmailAddress('jd.daniel@mheducation.com'));
