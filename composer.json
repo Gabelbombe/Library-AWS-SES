@@ -12,7 +12,8 @@
     }
   ],
   "require": {
-    "aws/aws-sdk-php": "2.*"
+    "aws/aws-sdk-php": "2.*",
+    "guzzle/guzzle": "3.9*"
   },
   "autoload": {
     "psr-4": {
