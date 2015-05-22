@@ -1,8 +1,6 @@
 <?php
-Namespace Wrappers
+Namespace Wrappers\Aws
 {
-    require dirname(dirname(dirname(__DIR__))) . '/vendor/autoload.php';
-
     /**
      * SimpleEmailService is based on Donovan Schonknecht's Amazon S3 PHP class, found here:
      * http://undesigned.org.za/2007/10/22/amazon-s3-php-class

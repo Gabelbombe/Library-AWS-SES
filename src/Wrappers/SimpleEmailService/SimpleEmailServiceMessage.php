@@ -1,5 +1,5 @@
 <?php
-Namespace Wrappers
+Namespace Wrappers\Aws
 {
     /**
      * SimpleEmailServiceMessage PHP class

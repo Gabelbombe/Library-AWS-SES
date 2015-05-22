@@ -1,5 +1,5 @@
 <?php
-Namespace Wrappers
+Namespace Wrappers\Aws
 {
     /**
      * SimpleEmailServiceMessage PHP class
@@ -25,7 +25,6 @@ Namespace Wrappers
          * @param string $verb HTTP verb
          * @return void
          */
-
         public function __construct(SimpleEmailService $ses, $verb)
         {
             $this->ses = $ses;
