@@ -11,4 +11,4 @@ $ses = New Wrappers\SimpleEmailService\SimpleEmailService(
     getenv('KEY'), getenv('SECRET'), 'email-smtp.us-east-1.amazonaws.com'
 );
 
-print_r($ses);
+print_r($ses->verifyEmailAddress('jd.daniel@mheducation.com'));

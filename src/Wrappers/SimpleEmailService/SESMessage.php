@@ -2,16 +2,16 @@
 Namespace Wrappers\SimpleEmailService
 {
     /**
-     * SimpleEmailServiceMessage PHP class
+     * SESMessage PHP class
      *
      * @package AmazonSimpleEmailService
      * @link https://github.com/ehime/Library-AWS-SES
      * @version 0.1
      */
-    Final Class SimpleEmailServiceMessage Extends SimpleEmailServiceAbstract
+    Final Class SESMessage Extends SESAbstract
     {
         // these are public for convenience only
-        // these are not to be used outside of the SimpleEmailService class.
+        // these are not to be used outside of the SES class.
         public  $to                 = '',
                 $cc                 = '',
                 $bcc                = '',
@@ -58,7 +58,7 @@ Namespace Wrappers\SimpleEmailService
          * If an array of addresses is passed, that array is merged into the current list.
          *
          * @param string $to
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function addTo($to)
         {
@@ -79,7 +79,7 @@ Namespace Wrappers\SimpleEmailService
          * Add carbon copy
          *
          * @param string $cc
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function addCC($cc)
         {
@@ -100,7 +100,7 @@ Namespace Wrappers\SimpleEmailService
          * Add blind carbon copy
          *
          * @param string $bcc
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function addBCC($bcc)
         {
@@ -121,7 +121,7 @@ Namespace Wrappers\SimpleEmailService
          * Add reply to
          *
          * @param string $replyTo
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function addReplyTo($replyTo)
         {
@@ -142,7 +142,7 @@ Namespace Wrappers\SimpleEmailService
          * Set sender
          *
          * @param string $from
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function setFrom($from)
         {
@@ -155,7 +155,7 @@ Namespace Wrappers\SimpleEmailService
          * Set return path
          *
          * @param string $returnPath
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function setReturnPath($returnPath)
         {
@@ -168,7 +168,7 @@ Namespace Wrappers\SimpleEmailService
          * Sets recipients character set
          * 
          * @param string $charset
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function setRecipientsCharset($charset) 
         {
@@ -181,7 +181,7 @@ Namespace Wrappers\SimpleEmailService
          * Sets email subject
          * 
          * @param string $subject
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function setSubject($subject) 
         {
@@ -194,7 +194,7 @@ Namespace Wrappers\SimpleEmailService
          * Sets subjects character set
          * 
          * @param string $charset
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function setSubjectCharset($charset) 
         {
@@ -208,7 +208,7 @@ Namespace Wrappers\SimpleEmailService
          * 
          * @param string $text
          * @param null $html
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function setMessageFromString($text, $html = null) 
         {
@@ -223,7 +223,7 @@ Namespace Wrappers\SimpleEmailService
          * 
          * @param string $textFile
          * @param null $htmlFile
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function setMessageFromFile($textFile, $htmlFile = null) 
         {
@@ -243,7 +243,7 @@ Namespace Wrappers\SimpleEmailService
          * 
          * @param string $textUrl
          * @param null   $htmlUrl
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function setMessageFromURL($textUrl, $htmlUrl = null) 
         {
@@ -263,7 +263,7 @@ Namespace Wrappers\SimpleEmailService
          * 
          * @param string $textCharset
          * @param null   $htmlCharset
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function setMessageCharset($textCharset, $htmlCharset = null) 
         {
@@ -277,7 +277,7 @@ Namespace Wrappers\SimpleEmailService
          * Add custom header - this works only with SendRawEmail
          *
          * @param string $header Your custom header
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          * @link( Restrictions on headers, http://docs.aws.amazon.com/ses/latest/DeveloperGuide/header-fields.html)
          */
         public function addCustomHeader($header) 
@@ -294,7 +294,7 @@ Namespace Wrappers\SimpleEmailService
          * @param string $data      The contents of the attachment file
          * @param string $mimeType  Specify custom MIME type
          * @param string $contentId Content ID of the attachment for inclusion in the mail message
-         * @return SimpleEmailServiceMessage $this
+         * @return SESMessage $this
          */
         public function addAttachmentFromData($name, $data, $mimeType = 'application/octet-stream', $contentId = null)
         {

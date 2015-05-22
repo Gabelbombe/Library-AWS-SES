@@ -2,13 +2,13 @@
 Namespace Wrappers\SimpleEmailService
 {
     /**
-     * SimpleEmailServiceMessage PHP class
+     * SESAbstract PHP class
      *
      * @package AmazonSimpleEmailService
      * @link https://github.com/ehime/Library-AWS-SES
      * @version 0.1
      */
-    Abstract Class SimpleEmailServiceAbstract
+    Abstract Class SESAbstract
     {
 
         /**

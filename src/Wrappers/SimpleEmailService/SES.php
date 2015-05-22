@@ -2,20 +2,20 @@
 Namespace Wrappers\SimpleEmailService
 {
     /**
-     * SimpleEmailService is based on Donovan Schonknecht's Amazon S3 PHP class, found here:
+     * SES is based on Donovan Schonknecht's Amazon S3 PHP class, found here:
      * http://undesigned.org.za/2007/10/22/amazon-s3-php-class
      *
      * @copyright 2015 Jd Daniel
      */
 
     /**
-     * SimpleEmailService PHP class
+     * SES PHP class
      *
      * @package AmazonSimpleEmailService
      * @link https://github.com/ehime/Library-AWS-SES
      * @version 0.1
      */
-    Class SimpleEmailService Extends SimpleEmailServiceAbstract
+    Class SES Extends SESAbstract
     {
         protected   $accessKey, // AWS Access key
                     $secretKey, // AWS Secret key
@@ -107,7 +107,7 @@ Namespace Wrappers\SimpleEmailService
          *
          * @param string $accessKey Access key
          * @param string $secretKey Secret key
-         * @return SimpleEmailService $this
+         * @return SES $this
          */
         public function setAuth($accessKey, $secretKey)
         {
@@ -124,7 +124,7 @@ Namespace Wrappers\SimpleEmailService
          */
         public function listVerifiedEmailAddresses()
         {
-            $rest = New SimpleEmailServiceRequest($this, 'GET');
+            $rest = New SESRequest($this, 'GET');
             $rest->setParameter('Action', 'ListVerifiedEmailAddresses');
 
             $rest = $rest->getResponse();
@@ -161,7 +161,7 @@ Namespace Wrappers\SimpleEmailService
 
         /**
          * Requests verification of the provided email address, so it can be used
-         * AS the 'From' address when sending emails through SimpleEmailService.
+         * AS the 'From' address when sending emails through SES.
          *
          * After submitting this request, you should receive a verification email
          * from Amazon at the specified address containing instructions to follow.
@@ -171,7 +171,7 @@ Namespace Wrappers\SimpleEmailService
          */
         public function verifyEmailAddress($email)
         {
-            $rest = New SimpleEmailServiceRequest($this, 'POST');
+            $rest = New SESRequest($this, 'POST');
             $rest->setParameter('Action', 'VerifyEmailAddress');
             $rest->setParameter('EmailAddress', $email);
 
@@ -203,7 +203,7 @@ Namespace Wrappers\SimpleEmailService
          */
         public function deleteVerifiedEmailAddress($email) 
         {
-            $rest = New SimpleEmailServiceRequest($this, 'DELETE');
+            $rest = New SESRequest($this, 'DELETE');
             $rest->setParameter('Action', 'DeleteVerifiedEmailAddress');
             $rest->setParameter('EmailAddress', $email);
 
@@ -231,7 +231,7 @@ Namespace Wrappers\SimpleEmailService
          */
         public function getSendQuota()
         {
-            $rest = New SimpleEmailServiceRequest($this, 'GET');
+            $rest = New SESRequest($this, 'GET');
             $rest->setParameter('Action', 'GetSendQuota');
 
             $rest = $rest->getResponse();
@@ -267,7 +267,7 @@ Namespace Wrappers\SimpleEmailService
          */
         public function getSendStatistics()
         {
-            $rest = New SimpleEmailServiceRequest($this, 'GET');
+            $rest = New SESRequest($this, 'GET');
             $rest->setParameter('Action', 'GetSendStatistics');
 
             $rest = $rest->getResponse();
@@ -305,9 +305,9 @@ Namespace Wrappers\SimpleEmailService
 
 
         /**
-         * Given a SimpleEmailServiceMessage object, submits the message to the service for sending.
+         * Given a SESMessage object, submits the message to the service for sending.
          *
-         * @param SimpleEmailServiceMessage $sesMessage An instance of the message class
+         * @param SESMessage $sesMessage An instance of the message class
          * @param boolean $use_raw_request If this is true or there are attachments to the email `SendRawEmail` call will be used
          * @return array An array containing the unique identifier for this message and a separate request id.
          *         Returns false if the provided message is missing any required fields.
@@ -320,7 +320,7 @@ Namespace Wrappers\SimpleEmailService
                 return false;
             }
 
-            $rest   = New SimpleEmailServiceRequest($this, 'POST');
+            $rest   = New SESRequest($this, 'POST');
             $action = (! empty($sesMessage->attachments) || $use_raw_request)
                 ? 'SendRawEmail'
                 : 'SendEmail';
@@ -435,24 +435,24 @@ Namespace Wrappers\SimpleEmailService
         {
             if (! $error)
             {
-                trigger_error(sprintf("SimpleEmailService::%s(): Encountered an error, but no description given", $method), E_USER_WARNING);
+                trigger_error(sprintf("SES::%s(): Encountered an error, but no description given", $method), E_USER_WARNING);
             }
 
             else if (isset($error['curl']) && $error['curl'])
             {
-                trigger_error(sprintf("SimpleEmailService::%s(): %s %s", $method, $error['code'], $error['message']), E_USER_WARNING);
+                trigger_error(sprintf("SES::%s(): %s %s", $method, $error['code'], $error['message']), E_USER_WARNING);
             }
 
             else if (isset($error['Error']))
             {
                 $e = $error['Error'];
-                $message = sprintf("SimpleEmailService::%s(): %s - %s: %s\nRequest Id: %s\n", $method, $e['Type'], $e['Code'], $e['Message'], $error['RequestId']);
+                $message = sprintf("SES::%s(): %s - %s: %s\nRequest Id: %s\n", $method, $e['Type'], $e['Code'], $e['Message'], $error['RequestId']);
                 trigger_error($message, E_USER_WARNING);
             }
 
             else
             {
-                trigger_error(sprintf("SimpleEmailService::%s(): Encountered an error: %s", $method, $error), E_USER_WARNING);
+                trigger_error(sprintf("SES::%s(): Encountered an error: %s", $method, $error), E_USER_WARNING);
             }
         }
     }

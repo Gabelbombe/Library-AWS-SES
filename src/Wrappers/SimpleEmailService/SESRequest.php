@@ -2,13 +2,13 @@
 Namespace Wrappers\SimpleEmailService
 {
     /**
-     * SimpleEmailServiceMessage PHP class
+     * SESMessage PHP class
      *
      * @package AmazonSimpleEmailService
      * @link https://github.com/ehime/Library-AWS-SES
      * @version 0.1
      */
-    Final Class SimpleEmailServiceRequest Extends SimpleEmailServiceAbstract
+    Final Class SESRequest Extends SESAbstract
     {
         public $response;
 
@@ -21,11 +21,11 @@ Namespace Wrappers\SimpleEmailService
         /**
          * Constructor
          *
-         * @param string SimpleEmailService $ses The SimpleEmailService object making this request
+         * @param string SES $ses The SES object making this request
          * @param string $verb HTTP verb
          * @return void
          */
-        public function __construct(SimpleEmailService $ses, $verb)
+        public function __construct(SES $ses, $verb)
         {
             $this->ses = $ses;
             $this->verb = $verb;
@@ -42,7 +42,7 @@ Namespace Wrappers\SimpleEmailService
          * @param string  $key Key
          * @param string  $value Value
          * @param boolean $replace Whether to replace the key if it already exists (default true)
-         * @return SimpleEmailServiceRequest $this
+         * @return SESRequest $this
          */
         public function setParameter($key, $value, $replace = true)
         {
@@ -104,7 +104,7 @@ Namespace Wrappers\SimpleEmailService
 
             // Basic setup
             $curl = curl_init();
-            curl_setopt($curl, CURLOPT_USERAGENT, 'SimpleEmailService/php');
+            curl_setopt($curl, CURLOPT_USERAGENT, 'SES/php');
 
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, ($this->ses->verifyHost() ? 2 : 0));
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, ($this->ses->verifyPeer() ? 1 : 0));
