@@ -7,7 +7,7 @@ header('Content-type: text/plain');
 define  ('APP_HOME', getenv('APP_HOME'));
 $auto = require APP_HOME . '/vendor/autoload.php';
 
-$ses = New Wrappers\SimpleEmailService\SimpleEmailService(
+$ses = New Wrappers\SimpleEmailService\SES(
     getenv('KEY'), getenv('SECRET'), 'email-smtp.us-east-1.amazonaws.com'
 );
 
