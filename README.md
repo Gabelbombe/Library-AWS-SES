@@ -8,8 +8,10 @@ A bit of example code will be a good demonstration of how simple this class is t
 
 First, you’ll need to create a SimpleEmailService class object:
 
-    require_once('ses.php');
-    $ses = new SimpleEmailService('Access Key Here', 'Secret Key Here');
+    require 'vendor/autoload.php'
+    USE Wrappers\SimpleEmailService\SES AS SimpleEmailService;
+
+    $ses = New SimpleEmailService('Access Key Here', 'Secret Key Here');
 
 If this is your first time using Simple Email Service, you will need to request verification of at least one e-mail address, so you can send messages:
 
@@ -46,7 +48,9 @@ This call will return a request id if you need it.
 
 The only thing left to do is send an e-mail, so let’s try it. First, you’ll need a SimpleEmailServiceMessage object.  Then, you’ll want to set various properties on the message.  For example:
 
-    $m = new SimpleEmailServiceMessage();
+    USE Wrappers\SimpleEmailService\SESMessage AS SimpleEmailServiceMessage;
+    $m = New SimpleEmailServiceMessage();
+
     $m->addTo('recipient@example.com');
     $m->setFrom('user@example.com');
     $m->setSubject('Hello, world!');
