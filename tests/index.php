@@ -14,11 +14,12 @@ $ses = New Wrappers\SimpleEmailService\SES(
 
 ////////////////////////////////////////////
 
-$email = 'jd.daniel@mheducation.com';
-
-echo "Verify emai: $email\n\n";
-print_r($ses->verifyEmailAddress($email));
-echo "\n\n";
+if (isset($_GET['email']) && ! empty(filter_input(INPUT_GET, 'email', FILTER_VALIDATE_EMAIL)))
+{
+    echo "Verify email: {$_GET['email']}\n\n";
+    print_r($ses->verifyEmailAddress($_GET['email']));
+    echo "\n\n";
+}
 
 echo "List Verified:\n\n";
 print_r($ses->listVerifiedEmailAddresses());
